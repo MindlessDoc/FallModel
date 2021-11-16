@@ -1,17 +1,13 @@
-#include "mainwindow.h"
+#include "model.h"
 
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
-
-    for(int y = 0; y <= 100; y += 10)
-    {
-        w.TestDraw(y);
-    }
+    Model model;
+    model.StartGUI();
+    model.StartModel();
 
     return a.exec();
 }

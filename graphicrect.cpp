@@ -1,9 +1,9 @@
 #include "graphicrect.h"
+#include "physicalbody.h"
 
-GraphicRect::GraphicRect()
+GraphicRect::GraphicRect(PhysicalBody* physicalBody)
     : QGraphicsItem()
-    , _x(0)
-    , _y(0)
+    , _physicalBody(physicalBody)
 {
 
 }
@@ -22,11 +22,8 @@ void GraphicRect::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 {
         painter->setPen(QPen(Qt::green));
         painter->setBrush(QBrush(Qt::yellow));
-        painter->drawRect(_x, _y, 100, 100);
+        painter->drawRect(_physicalBody->GetX() - 50, -_physicalBody->GetY(), 100, 100);
 
         Q_UNUSED(option);
         Q_UNUSED(widget);
 }
-
-void GraphicRect::SetX(int x) { _x = x; }
-void GraphicRect::SetY(int y) { _y = y; }

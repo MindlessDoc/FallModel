@@ -3,21 +3,16 @@
 #include <QGraphicsItem>
 #include <QPainter>
 
+class PhysicalBody;
+
 class GraphicRect : public QGraphicsItem
 {
 public:
-    GraphicRect();
+    GraphicRect(PhysicalBody* _physicalBody);
     ~GraphicRect();
-    QRectF boundingRect() const;
+    QRectF boundingRect() const override;
 
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
-
-    void SetX(int x);
-    void SetY(int y);
-
-    int GetX();
-    int GetY();
-
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 private:
-    int _x, _y;
+    PhysicalBody* _physicalBody;
 };

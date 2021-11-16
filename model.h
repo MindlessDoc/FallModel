@@ -1,6 +1,6 @@
 #pragma once
 #include "mainwindow.h"
-#include "rect.h"
+#include "physicalbody.h"
 
 #include <QTimer>
 #include <QTime>
@@ -12,15 +12,17 @@ class Model : public QObject
     Q_OBJECT
 public:
     Model();
+    void StartGUI();
+    void StartModel();
 
 signals:
     void PhysicalBodyChanged();
 
 public slots:
-    void UpdatePhysicalBody(int x, int y);
+    void UpdatePhysicalBody();
 
 private:
-    GraphicRect* _rect;
+    PhysicalBody* _physicalBody;
     MainWindow* _mainWindow;
 
     QTimer* _timer;

@@ -2,7 +2,6 @@
 
 #include <QMainWindow>
 #include <QGraphicsScene>
-#include "rect.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,7 +14,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QGraphicsItem* item, QWidget *parent = nullptr);
     ~MainWindow();
-
+public slots:
     void update();
 
 private:

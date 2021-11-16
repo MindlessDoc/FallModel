@@ -10,6 +10,7 @@ MainWindow::MainWindow(QGraphicsItem* item, QWidget *parent)
     scene = new QGraphicsScene();
     ui->graphicsView->setScene(scene);
 
+    scene->addLine(-200, 100, 200, 100);
     scene->addItem(item);
 }
 
