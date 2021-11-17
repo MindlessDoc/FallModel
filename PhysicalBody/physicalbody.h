@@ -1,7 +1,7 @@
 #pragma once
 
 //#include <QGraphicsItem>
-#include "graphicrect.h"
+#include "Graphic/graphicrect.h"
 
 class PhysicalBody
 {

@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-#include "physicalbody.h"
+#include "PhysicalBody/physicalbody.h"
+#include <iostream>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -8,12 +9,16 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    scene = new QGraphicsScene();
-    ui->approximateView->setScene(scene);
+    approximateScene = new QGraphicsScene();
+    ui->approximateView->setScene(approximateScene);
+
+    analyticScene = new QGraphicsScene();
+    ui->analyticView->setScene(analyticScene);
 
     this->resize(1200,800);
 
-    scene->addLine(-200, 300, 200, 300);
+    approximateScene->addLine(-200, 0, 200, 0);
+    analyticScene->addLine(-200, 0, 200, 0);
 }
 
 MainWindow::~MainWindow()
@@ -26,12 +31,17 @@ void MainWindow::InitPhysicalBody(PhysicalBody *physicalBody)
     physicalBody->Init(ui->OxLineEdit->text().toDouble(), ui->OyLineEdit->text().toDouble(),
                        ui->speedLineEdit->text().toDouble(),
                        ui->approximateSpeeLabel, ui->approximateXLabel, ui->approximateYLabel);
-    scene->addItem(physicalBody->GetAvatar());
+
+    //std::cout << physicalBody->GetAvatar()->hasFocus() << std::endl;
+    approximateScene->addItem(physicalBody->GetAvatar());
+
+    //approximateScene->setFocusItem(physicalBody->GetAvatar());
+    //std::cout << approximateScene->hasFocus();
 }
 
 void MainWindow::update()
 {
-    scene->update();
+    approximateScene->update();
 }
 
 QPushButton* MainWindow::GetStartButton()
@@ -43,16 +53,6 @@ QPushButton* MainWindow::GetPauseButton()
 {
     return ui->pauseButtom;
 }
-
-//Ui::MainWindow* MainWindow::GetUI()
-//{
-//    return ui;
-//}
-
-//void MainWindow::AddPhysicalBody(GraphicRect* graphicRect)
-//{
-
-//}
 
 
 void MainWindow::on_beginButtom_clicked()

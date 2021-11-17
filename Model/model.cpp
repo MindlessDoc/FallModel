@@ -1,5 +1,5 @@
 #include "model.h"
-#include "func.h"
+#include "CalculationMethods/func.h"
 
 Model::Model()
     : QObject()
@@ -20,12 +20,12 @@ void Model::UpdatePhysicalBody()
     _approximatePhysicalBody->SetSpeed(MethodEuler(_approximatePhysicalBody->GetSpeed(), 0.01));
     _approximatePhysicalBody->SetY(MethodEuler_2(_approximatePhysicalBody->GetY(), additional_speed, 0.01));
 
-    if(_approximatePhysicalBody->GetY() < -230)
+    if(_approximatePhysicalBody->GetY() < 0)
     {
         _approximatePhysicalBody->SetSpeed(-_approximatePhysicalBody->GetSpeed());
     }
 
-    _approximatePhysicalBody->GetAvatar()->UpdateValues();
+   _approximatePhysicalBody->GetAvatar()->UpdateValues();
 
     emit PhysicalBodyChanged();
 }

@@ -1,5 +1,5 @@
 #include "physicalbody.h"
-#include "graphicrect.h"
+#include "Graphic/graphicrect.h"
 
 PhysicalBody::PhysicalBody(double x, double y, double speed)
     : _x(x)

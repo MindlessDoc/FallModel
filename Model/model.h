@@ -1,6 +1,6 @@
 #pragma once
-#include "mainwindow.h"
-#include "physicalbody.h"
+#include "Graphic/mainwindow.h"
+#include "PhysicalBody/physicalbody.h"
 
 #include <QTimer>
 #include <QTime>

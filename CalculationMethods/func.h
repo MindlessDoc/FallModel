@@ -9,7 +9,7 @@ double func_1(double x, double k)
 
 double MethodEuler(const double prev_speed, const double delta_t)
 {
-    return prev_speed + delta_t * func_1(prev_speed, 0.2);
+    return prev_speed + delta_t * func_1(prev_speed, 0);
 }
 
 double MethodEuler_2(const double prev_way, const double prev_speed, const double delta_t)

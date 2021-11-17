@@ -17,13 +17,10 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-//    Ui::MainWindow* GetUI();
     QPushButton* GetStartButton();
     QPushButton* GetPauseButton();
 
     void InitPhysicalBody(PhysicalBody* physicalBody);
-
-    //void AddPhysicalBody(GraphicRect* graphicRect);
 
 public slots:
     void update();
@@ -33,5 +30,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QGraphicsScene *scene;
+    QGraphicsScene *approximateScene;
+    QGraphicsScene *analyticScene;
 };
