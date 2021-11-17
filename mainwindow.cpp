@@ -23,7 +23,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::InitPhysicalBody(PhysicalBody *physicalBody)
 {
-    physicalBody->Init()
+    physicalBody->Init(ui->OxLineEdit->text().toDouble(), ui->OyLineEdit->text().toDouble(),
+                       ui->speedLineEdit->text().toDouble(),
+                       ui->approximateSpeeLabel, ui->approximateXLabel, ui->approximateYLabel);
     scene->addItem(physicalBody->GetAvatar());
 }
 

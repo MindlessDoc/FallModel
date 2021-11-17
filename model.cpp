@@ -5,7 +5,7 @@ Model::Model()
     : QObject()
 {
     _approximatePhysicalBody = new PhysicalBody();
-    _mainWindow = new MainWindow(_physicalBody->GetAvatar());
+    _mainWindow = new MainWindow();
     _timer = new QTimer();
 
     connect(_mainWindow->GetStartButton(), &QPushButton::clicked, this, &Model::StartModel);
@@ -15,16 +15,16 @@ Model::Model()
 
 void Model::UpdatePhysicalBody()
 {
-    double additional_speed = _physicalBody->GetSpeed();
-    _physicalBody->SetSpeed(MethodEuler(_physicalBody->GetSpeed(), 0.01));
-    _physicalBody->SetY(MethodEuler_2(_physicalBody->GetY(), additional_speed, 0.01));
+    double additional_speed = _approximatePhysicalBody->GetSpeed();
+    _approximatePhysicalBody->SetSpeed(MethodEuler(_approximatePhysicalBody->GetSpeed(), 0.01));
+    _approximatePhysicalBody->SetY(MethodEuler_2(_approximatePhysicalBody->GetY(), additional_speed, 0.01));
 
-    if(_physicalBody->GetY() < 0)
+    if(_approximatePhysicalBody->GetY() < -30)
     {
-        _physicalBody->SetSpeed(-_physicalBody->GetSpeed());
+        _approximatePhysicalBody->SetSpeed(-_approximatePhysicalBody->GetSpeed());
     }
 
-    //_physicalBody->GetAvatar()->UpdateValues();
+    _approximatePhysicalBody->GetAvatar()->UpdateValues();
 
     emit PhysicalBodyChanged();
 }
@@ -36,5 +36,6 @@ void Model::StartGUI()
 
 void Model::StartModel()
 {
+    _mainWindow->InitPhysicalBody(_approximatePhysicalBody);
     _timer->start(1);
 }

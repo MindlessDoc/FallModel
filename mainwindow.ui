@@ -196,24 +196,21 @@
             </property>
             <layout class="QFormLayout" name="formLayout_3">
              <item row="0" column="0">
-              <widget class="QLabel" name="label">
-               <property name="text">
-                <string>OY</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1">
-              <widget class="QLineEdit" name="lineEdit"/>
-             </item>
-             <item row="1" column="0">
               <widget class="QLabel" name="label_2">
                <property name="text">
                 <string>OX</string>
                </property>
               </widget>
              </item>
-             <item row="1" column="1">
-              <widget class="QLineEdit" name="lineEdit_2"/>
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="OxLineEdit"/>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>OY</string>
+               </property>
+              </widget>
              </item>
              <item row="2" column="0">
               <widget class="QLabel" name="label_3">
@@ -222,8 +219,11 @@
                </property>
               </widget>
              </item>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="OyLineEdit"/>
+             </item>
              <item row="2" column="1">
-              <widget class="QLineEdit" name="lineEdit_3"/>
+              <widget class="QLineEdit" name="speedLineEdit"/>
              </item>
              <item row="3" column="0">
               <widget class="QLabel" name="label_4">
@@ -233,7 +233,7 @@
               </widget>
              </item>
              <item row="3" column="1">
-              <widget class="QLineEdit" name="lineEdit_4"/>
+              <widget class="QLineEdit" name="resistanceLineEdit"/>
              </item>
             </layout>
            </widget>
@@ -255,7 +255,7 @@
              </font>
             </property>
             <property name="title">
-             <string>GroupBox</string>
+             <string>Настроки приближенных вычислений</string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_4">
              <item>
@@ -327,12 +327,12 @@
                 <item>
                  <widget class="QLabel" name="label_5">
                   <property name="text">
-                   <string>TextLabel</string>
+                   <string>Шаг</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="lineEdit_5"/>
+                 <widget class="QLineEdit" name="stepLineEdit"/>
                 </item>
                </layout>
               </widget>
