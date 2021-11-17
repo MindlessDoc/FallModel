@@ -28,10 +28,11 @@ MainWindow::~MainWindow()
 
 void MainWindow::InitPhysicalBody(PhysicalBody *physicalBody)
 {
-    physicalBody->Init(ui->OxLineEdit->text().toDouble(), ui->OyLineEdit->text().toDouble(),
+    physicalBody->InitValues(ui->OxLineEdit->text().toDouble(), ui->OyLineEdit->text().toDouble(),
                        ui->speedLineEdit->text().toDouble(),
                        ui->approximateSpeeLabel, ui->approximateXLabel, ui->approximateYLabel);
-
+    physicalBody->InitMethod(new EulerMethod(ui->stepLineEdit->text().toDouble(),
+                                        new Function(ui->resistanceLineEdit->text().toDouble())));
     //std::cout << physicalBody->GetAvatar()->hasFocus() << std::endl;
     approximateScene->addItem(physicalBody->GetAvatar());
 

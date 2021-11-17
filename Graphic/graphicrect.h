@@ -21,7 +21,7 @@ public:
     void UpdateLabelX();
     void UpdateLabelY();
 
-    void UpdateValues();
+    void UpdateLabels();
 
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 private:

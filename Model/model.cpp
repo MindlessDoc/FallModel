@@ -4,6 +4,7 @@
 Model::Model()
     : QObject()
 {
+
     _approximatePhysicalBody = new PhysicalBody();
     _mainWindow = new MainWindow();
     _timer = new QTimer();
@@ -16,17 +17,7 @@ Model::Model()
 
 void Model::UpdatePhysicalBody()
 {
-    double additional_speed = _approximatePhysicalBody->GetSpeed();
-    _approximatePhysicalBody->SetSpeed(MethodEuler(_approximatePhysicalBody->GetSpeed(), 0.01));
-    _approximatePhysicalBody->SetY(MethodEuler_2(_approximatePhysicalBody->GetY(), additional_speed, 0.01));
-
-    if(_approximatePhysicalBody->GetY() < 0)
-    {
-        _approximatePhysicalBody->SetSpeed(-_approximatePhysicalBody->GetSpeed());
-    }
-
-   _approximatePhysicalBody->GetAvatar()->UpdateValues();
-
+    _approximatePhysicalBody->UpdateValues();
     emit PhysicalBodyChanged();
 }
 
@@ -37,8 +28,9 @@ void Model::StartGUI()
 
 void Model::StartModel()
 {
+    _mainWindow->GetPauseButton()->setText("Пауза");
     _mainWindow->InitPhysicalBody(_approximatePhysicalBody);
-    _timer->start(1);
+    _timer->start(10);
 }
 
 void Model::PauseModel()

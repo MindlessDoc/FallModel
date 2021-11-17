@@ -2,22 +2,28 @@
 
 //#include <QGraphicsItem>
 #include "Graphic/graphicrect.h"
+#include "../CalculationMethods/EulerMethod/eulermethod.h"
+#include "../CalculationMethods/AnalyticMethods/analyticmethod.h"
 
 class PhysicalBody
 {
 public:
-    PhysicalBody(double x = 0, double y = 0, double speed = 0);
+    PhysicalBody(Method* method = nullptr, double x = 0, double y = 0, double speed = 0);
 
-    void Init(double x, double y, double speed,
+    void InitValues(double x, double y, double speed,
                   QLabel* labelSpeed, QLabel* labelX, QLabel* labelY);
 
     //void SetAvatar(QGraphicsItem* avatar);
     GraphicRect* GetAvatar();
 
-    void SetX(double x);
-    void SetY(double y);
+    void UpdateValues();
 
-    void SetSpeed(double speed);
+    void InitMethod(Method* method);
+
+//    void SetX(double x);
+//    void SetY(double y);
+
+//    void SetSpeed(double speed);
 
     double GetX();
     double GetY();
@@ -31,5 +37,7 @@ private:
     double _speed;
 
     GraphicRect* _avatar = nullptr;
+
+    Method* _method;
 };
 

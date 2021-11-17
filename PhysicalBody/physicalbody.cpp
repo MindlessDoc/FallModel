@@ -1,15 +1,16 @@
 #include "physicalbody.h"
 #include "Graphic/graphicrect.h"
 
-PhysicalBody::PhysicalBody(double x, double y, double speed)
+PhysicalBody::PhysicalBody(Method* method, double x, double y, double speed)
     : _x(x)
     , _y(y)
     , _speed(speed)
+    , _method(method)
 {
     //_avatar = new GraphicRect(this);
 }
 
-void PhysicalBody::Init(double x, double y, double speed,
+void PhysicalBody::InitValues(double x, double y, double speed,
                         QLabel* labelSpeed, QLabel* labelX, QLabel* labelY)
 {
     _x = x; _y = y; _speed = speed;
@@ -20,15 +21,35 @@ void PhysicalBody::Init(double x, double y, double speed,
     _avatar->SetLabelY(labelY);
 }
 
+
+void PhysicalBody::InitMethod(Method* method)
+{
+    delete _method;
+    _method = method;
+}
 GraphicRect* PhysicalBody::GetAvatar()
 {
     return _avatar;
 }
 
-void PhysicalBody::SetX(double x) { _x = x; }
-void PhysicalBody::SetY(double y) { _y = y; }
+void PhysicalBody::UpdateValues()
+{
+    double additional_speed = _speed;
+    _speed = _method->GetSpeed(_speed);
+    _y = _method->GetY(_y, additional_speed);
 
-void PhysicalBody::SetSpeed(double speed) { _speed = speed; }
+    if(_y < 0)
+    {
+        _speed *= -1;
+    }
+
+    _avatar->UpdateLabels();
+}
+
+//void PhysicalBody::SetX(double x) { _x = x; }
+//void PhysicalBody::SetY(double y) { _y = y; }
+
+//void PhysicalBody::SetSpeed(double speed) { _speed = speed; }
 
 double PhysicalBody::GetX() { return _x; }
 double PhysicalBody::GetY() { return _y; }

@@ -44,7 +44,7 @@ void GraphicRect::UpdateLabelY()
     _labelY->setText(QString::number(_physicalBody->GetY()));
 }
 
-void GraphicRect::UpdateValues()
+void GraphicRect::UpdateLabels()
 {
     _labelSpeed->setText(QString::number(_physicalBody->GetSpeed()));
     _labelX->setText(QString::number(_physicalBody->GetX()));
