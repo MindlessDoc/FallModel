@@ -14,6 +14,7 @@ public:
     Model();
     void StartGUI();
     void StartModel();
+    void PauseModel();
 
 signals:
     void PhysicalBodyChanged();

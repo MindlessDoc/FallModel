@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     this->resize(1200,800);
 
-    scene->addLine(-200, 100, 200, 100);
+    scene->addLine(-200, 300, 200, 300);
 }
 
 MainWindow::~MainWindow()
@@ -37,6 +37,11 @@ void MainWindow::update()
 QPushButton* MainWindow::GetStartButton()
 {
     return ui->startButtom;
+}
+
+QPushButton* MainWindow::GetPauseButton()
+{
+    return ui->pauseButtom;
 }
 
 //Ui::MainWindow* MainWindow::GetUI()

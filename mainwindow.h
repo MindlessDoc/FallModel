@@ -19,6 +19,7 @@ public:
 
 //    Ui::MainWindow* GetUI();
     QPushButton* GetStartButton();
+    QPushButton* GetPauseButton();
 
     void InitPhysicalBody(PhysicalBody* physicalBody);
 
