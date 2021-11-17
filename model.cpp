@@ -4,14 +4,13 @@
 Model::Model()
     : QObject()
 {
-    _physicalBody = new PhysicalBody(0, 200, 0);
+    _approximatePhysicalBody = new PhysicalBody();
     _mainWindow = new MainWindow(_physicalBody->GetAvatar());
-
     _timer = new QTimer();
 
+    connect(_mainWindow->GetStartButton(), &QPushButton::clicked, this, &Model::StartModel);
     connect(_timer, &QTimer::timeout, this, &Model::UpdatePhysicalBody);
     connect(this, &Model::PhysicalBodyChanged, _mainWindow, &MainWindow::update);
-
 }
 
 void Model::UpdatePhysicalBody()
@@ -25,7 +24,7 @@ void Model::UpdatePhysicalBody()
         _physicalBody->SetSpeed(-_physicalBody->GetSpeed());
     }
 
-    std::cout << _physicalBody->GetSpeed() << " " << _physicalBody->GetY() << std::endl;
+    //_physicalBody->GetAvatar()->UpdateValues();
 
     emit PhysicalBodyChanged();
 }

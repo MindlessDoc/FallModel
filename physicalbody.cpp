@@ -6,15 +6,21 @@ PhysicalBody::PhysicalBody(double x, double y, double speed)
     , _y(y)
     , _speed(speed)
 {
-    _avatar = new GraphicRect(this);
+    //_avatar = new GraphicRect(this);
 }
 
-//void PhysicalBody::SetAvatar(QGraphicsItem* avatar)
-//{
-//    _avatar = avatar;
-//}
+void PhysicalBody::Init(double x, double y, double speed,
+                        QLabel* labelSpeed, QLabel* labelX, QLabel* labelY)
+{
+    _x = x; _y = y; _speed = speed;
+    _avatar = new GraphicRect(this);
 
-QGraphicsItem* PhysicalBody::GetAvatar()
+    _avatar->SetLabelSpeed(labelSpeed);
+    _avatar->SetLabelX(labelX);
+    _avatar->SetLabelY(labelY);
+}
+
+GraphicRect* PhysicalBody::GetAvatar()
 {
     return _avatar;
 }

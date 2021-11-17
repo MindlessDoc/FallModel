@@ -1,5 +1,6 @@
 #include "graphicrect.h"
 #include "physicalbody.h"
+#include <QString>
 
 GraphicRect::GraphicRect(PhysicalBody* physicalBody)
     : QGraphicsItem()
@@ -26,4 +27,40 @@ void GraphicRect::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 
         Q_UNUSED(option);
         Q_UNUSED(widget);
+}
+
+void GraphicRect::UpdateLabelSpeed()
+{
+    _labelSpeed->setText(QString::number(_physicalBody->GetSpeed()));
+}
+
+void GraphicRect::UpdateLabelX()
+{
+    _labelX->setText(QString::number(_physicalBody->GetX()));
+}
+
+void GraphicRect::UpdateLabelY()
+{
+    _labelY->setText(QString::number(_physicalBody->GetY()));
+}
+
+void GraphicRect::UpdateValues()
+{
+    _labelSpeed->setText(QString::number(_physicalBody->GetSpeed()));
+    _labelX->setText(QString::number(_physicalBody->GetX()));
+    _labelY->setText(QString::number(_physicalBody->GetY()));
+
+}
+
+void GraphicRect::SetLabelSpeed(QLabel *labelSpeed)
+{
+    _labelSpeed = labelSpeed;
+}
+void GraphicRect::SetLabelX(QLabel *labelX)
+{
+    _labelX = labelX;
+}
+void GraphicRect::SetLabelY(QLabel *labelY)
+{
+    _labelY = labelY;
 }

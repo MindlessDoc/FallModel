@@ -1,14 +1,18 @@
 #pragma once
 
-#include <QGraphicsItem>
+//#include <QGraphicsItem>
+#include "graphicrect.h"
 
 class PhysicalBody
 {
 public:
     PhysicalBody(double x = 0, double y = 0, double speed = 0);
 
+    void Init(double x, double y, double speed,
+                  QLabel* labelSpeed, QLabel* labelX, QLabel* labelY);
+
     //void SetAvatar(QGraphicsItem* avatar);
-    QGraphicsItem* GetAvatar();
+    GraphicRect* GetAvatar();
 
     void SetX(double x);
     void SetY(double y);
@@ -26,6 +30,6 @@ private:
 
     double _speed;
 
-    QGraphicsItem* _avatar;
+    GraphicRect* _avatar = nullptr;
 };
 

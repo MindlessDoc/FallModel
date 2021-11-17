@@ -22,9 +22,10 @@ public slots:
     void UpdatePhysicalBody();
 
 private:
-    PhysicalBody* _physicalBody;
+    PhysicalBody* _approximatePhysicalBody;
+    PhysicalBody* _analyticPhysicalBody;
     MainWindow* _mainWindow;
 
-    QTimer* _timer;
+    QTimer* _timer = nullptr;
 };
 
