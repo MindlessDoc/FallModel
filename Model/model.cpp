@@ -5,7 +5,8 @@ Model::Model()
     : QObject()
 {
 
-    _approximatePhysicalBody = new PhysicalBody();
+    _leftPhysicalBody = new PhysicalBody();
+    _rightPhysicalBody = new PhysicalBody();
     _mainWindow = new MainWindow();
     _timer = new QTimer();
 
@@ -17,7 +18,8 @@ Model::Model()
 
 void Model::UpdatePhysicalBody()
 {
-    _approximatePhysicalBody->UpdateValues();
+    _leftPhysicalBody->UpdateValues();
+    _rightPhysicalBody->UpdateValues();
     emit PhysicalBodyChanged();
 }
 
@@ -28,9 +30,12 @@ void Model::StartGUI()
 
 void Model::StartModel()
 {
+    time_update = _mainWindow->GetTimeUpdate();
+
     _mainWindow->GetPauseButton()->setText("Пауза");
-    _mainWindow->InitPhysicalBody(_approximatePhysicalBody);
-    _timer->start(10);
+    _mainWindow->InitPhysicalBodies(_leftPhysicalBody, _rightPhysicalBody);
+
+    _timer->start(time_update);
 }
 
 void Model::PauseModel()

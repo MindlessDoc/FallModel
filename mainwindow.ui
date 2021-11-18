@@ -31,42 +31,42 @@
          </property>
          <layout class="QFormLayout" name="formLayout">
           <item row="0" column="0">
-           <widget class="QLabel" name="staticAppSpeedLabel">
+           <widget class="QLabel" name="staticLeftSpeedLabel">
             <property name="text">
              <string>Скорость:</string>
             </property>
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QLabel" name="approximateSpeeLabel">
+           <widget class="QLabel" name="leftSpeeLabel">
             <property name="text">
              <string/>
             </property>
            </widget>
           </item>
           <item row="1" column="0">
-           <widget class="QLabel" name="staticAppXLabel">
+           <widget class="QLabel" name="staticLeftXLabel">
             <property name="text">
              <string>OX</string>
             </property>
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="QLabel" name="approximateXLabel">
+           <widget class="QLabel" name="leftXLabel">
             <property name="text">
              <string/>
             </property>
            </widget>
           </item>
           <item row="2" column="0">
-           <widget class="QLabel" name="staticAppYLabel">
+           <widget class="QLabel" name="staticLeftLabel">
             <property name="text">
              <string>OY</string>
             </property>
            </widget>
           </item>
           <item row="2" column="1">
-           <widget class="QLabel" name="approximateYLabel">
+           <widget class="QLabel" name="leftYLabel">
             <property name="text">
              <string/>
             </property>
@@ -76,10 +76,10 @@
         </widget>
        </item>
        <item>
-        <widget class="QGraphicsView" name="approximateView"/>
+        <widget class="QGraphicsView" name="leftView"/>
        </item>
        <item>
-        <widget class="QGraphicsView" name="analyticView"/>
+        <widget class="QGraphicsView" name="rightView"/>
        </item>
        <item>
         <widget class="QGroupBox" name="groupBox_2">
@@ -100,42 +100,42 @@
          </property>
          <layout class="QFormLayout" name="formLayout_2">
           <item row="0" column="0">
-           <widget class="QLabel" name="staticAnalyticSpeedLabel">
+           <widget class="QLabel" name="staticRightSpeedLabel">
             <property name="text">
              <string>Скорость:</string>
             </property>
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QLabel" name="analyticSpeedLabel">
+           <widget class="QLabel" name="rightSpeedLabel">
             <property name="text">
              <string/>
             </property>
            </widget>
           </item>
           <item row="1" column="0">
-           <widget class="QLabel" name="staticAnalyticXLabel">
+           <widget class="QLabel" name="staticRightXLabel">
             <property name="text">
              <string>OX</string>
             </property>
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="QLabel" name="analyticXLabel">
+           <widget class="QLabel" name="rightXLabel">
             <property name="text">
              <string/>
             </property>
            </widget>
           </item>
           <item row="2" column="0">
-           <widget class="QLabel" name="staticAnalyticYLabel">
+           <widget class="QLabel" name="staticRightYLabel">
             <property name="text">
              <string>OY</string>
             </property>
            </widget>
           </item>
           <item row="2" column="1">
-           <widget class="QLabel" name="analyticYLabel">
+           <widget class="QLabel" name="rightYLabel">
             <property name="text">
              <string/>
             </property>

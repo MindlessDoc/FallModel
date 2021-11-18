@@ -9,16 +9,16 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    approximateScene = new QGraphicsScene();
-    ui->approximateView->setScene(approximateScene);
+    leftScene = new QGraphicsScene();
+    ui->leftView->setScene(leftScene);
 
-    analyticScene = new QGraphicsScene();
-    ui->analyticView->setScene(analyticScene);
+    rightScene = new QGraphicsScene();
+    ui->rightView->setScene(rightScene);
 
     this->resize(1200,800);
 
-    approximateScene->addLine(-200, 0, 200, 0);
-    analyticScene->addLine(-200, 0, 200, 0);
+    leftScene->addLine(-200, 0, 200, 0);
+    rightScene->addLine(-200, 0, 200, 0);
 }
 
 MainWindow::~MainWindow()
@@ -26,23 +26,28 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::InitPhysicalBody(PhysicalBody *physicalBody)
+void MainWindow::InitPhysicalBodies(PhysicalBody* leftPhysicalBody, PhysicalBody* rightPhysicalBody)
 {
-    physicalBody->InitValues(ui->OxLineEdit->text().toDouble(), ui->OyLineEdit->text().toDouble(),
+    leftPhysicalBody->InitValues(ui->OxLineEdit->text().toDouble(), ui->OyLineEdit->text().toDouble(),
                        ui->speedLineEdit->text().toDouble(),
-                       ui->approximateSpeeLabel, ui->approximateXLabel, ui->approximateYLabel);
-    physicalBody->InitMethod(new EulerMethod(ui->stepLineEdit->text().toDouble(),
+                       ui->leftSpeeLabel, ui->leftXLabel, ui->leftYLabel);
+    leftPhysicalBody->InitMethod(new EulerMethod(ui->stepLineEdit->text().toDouble(),
                                         new Function(ui->resistanceLineEdit->text().toDouble())));
-    //std::cout << physicalBody->GetAvatar()->hasFocus() << std::endl;
-    approximateScene->addItem(physicalBody->GetAvatar());
+    leftScene->addItem(leftPhysicalBody->GetAvatar());
 
-    //approximateScene->setFocusItem(physicalBody->GetAvatar());
-    //std::cout << approximateScene->hasFocus();
+    rightPhysicalBody->InitValues(ui->OxLineEdit->text().toDouble(), ui->OyLineEdit->text().toDouble(),
+                       ui->speedLineEdit->text().toDouble(),
+                       ui->rightSpeedLabel, ui->rightXLabel, ui->rightYLabel);
+    rightPhysicalBody->InitMethod(new ClassicFourthRKMethod(ui->stepLineEdit->text().toDouble(),
+                                        new Function(ui->resistanceLineEdit->text().toDouble())));
+    rightScene->addItem(rightPhysicalBody->GetAvatar());
+
 }
 
 void MainWindow::update()
 {
-    approximateScene->update();
+    leftScene->update();
+    rightScene->update();
 }
 
 QPushButton* MainWindow::GetStartButton()
@@ -55,9 +60,9 @@ QPushButton* MainWindow::GetPauseButton()
     return ui->pauseButtom;
 }
 
-
-void MainWindow::on_beginButtom_clicked()
+int MainWindow::GetTimeUpdate()
 {
-
+    return ui->stepLineEdit->text().toDouble() * 1000;
 }
+
 

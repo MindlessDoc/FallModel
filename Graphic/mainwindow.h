@@ -20,16 +20,14 @@ public:
     QPushButton* GetStartButton();
     QPushButton* GetPauseButton();
 
-    void InitPhysicalBody(PhysicalBody* physicalBody);
+    void InitPhysicalBodies(PhysicalBody* leftPhysicalBody, PhysicalBody* rightPhysicalBody);
+    int GetTimeUpdate();
 
 public slots:
     void update();
 
-private slots:
-    void on_beginButtom_clicked();
-
 private:
     Ui::MainWindow *ui;
-    QGraphicsScene *approximateScene;
-    QGraphicsScene *analyticScene;
+    QGraphicsScene *leftScene;
+    QGraphicsScene *rightScene;
 };

@@ -3,7 +3,8 @@
 //#include <QGraphicsItem>
 #include "Graphic/graphicrect.h"
 #include "../CalculationMethods/EulerMethod/eulermethod.h"
-#include "../CalculationMethods/AnalyticMethods/analyticmethod.h"
+#include "../CalculationMethods/MidPointMethod/midpointmethod.h"
+#include "../CalculationMethods/ClassicFourthRKMethod/classicfourthrkmethod.h"
 
 class PhysicalBody
 {

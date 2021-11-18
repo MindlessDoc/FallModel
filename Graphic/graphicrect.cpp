@@ -16,14 +16,14 @@ GraphicRect::~GraphicRect()
 
 QRectF GraphicRect::boundingRect() const
 {
-    return QRectF(0, 0, 70, 70);
+    return QRectF(0, 0, 40, 40);
 }
 
 void GraphicRect::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
         painter->setPen(QPen(Qt::green));
         painter->setBrush(QBrush(Qt::yellow));
-        painter->drawRect(_physicalBody->GetX() - 35, -_physicalBody->GetY() - 70, 70, 70);
+        painter->drawRect(_physicalBody->GetX() * 100, -_physicalBody->GetY() * 100 - 40, 40, 40);
 
         Q_UNUSED(option);
         Q_UNUSED(widget);

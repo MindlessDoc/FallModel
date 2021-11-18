@@ -9,7 +9,8 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    CalculationMethods/AnalyticMethods/analyticmethod.cpp \
+    CalculationMethods/ClassicFourthRKMethod/classicfourthrkmethod.cpp \
+    CalculationMethods\MidPointMethod\midpointmethod.cpp \
     CalculationMethods/EulerMethod/eulermethod.cpp \
     CalculationMethods/func.cpp \
     CalculationMethods/method.cpp \
@@ -21,7 +22,8 @@ SOURCES += \
     PhysicalBody/physicalbody.cpp
 
 HEADERS += \
-    CalculationMethods/AnalyticMethods/analyticmethod.h \
+    CalculationMethods/ClassicFourthRKMethod/classicfourthrkmethod.h \
+    CalculationMethods\MidPointMethod\midpointmethod.h \
     CalculationMethods/EulerMethod/eulermethod.h \
     CalculationMethods/func.h \
     CalculationMethods/method.h \
