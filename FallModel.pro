@@ -18,6 +18,7 @@ SOURCES += \
     CalculationMethods/func.cpp \
     CalculationMethods/method.cpp \
     Functions/function.cpp \
+    Graphic/Charts/chart.cpp \
     main.cpp \
     Graphic/mainwindow.cpp \
     Model/model.cpp \
@@ -32,6 +33,7 @@ HEADERS += \
     CalculationMethods/method.h \
     Functions/function.h \
     Graphic/mainwindow.h \
+    Graphic/Charts/chart.h \
     Model/model.h \
     Graphic/graphicrect.h \
     PhysicalBody/physicalbody.h

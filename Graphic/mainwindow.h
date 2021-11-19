@@ -4,11 +4,7 @@
 #include <QGraphicsScene>
 #include <QPushButton>
 #include "graphicrect.h"
-#include <QChart>
-#include <QSplineSeries>
-#include <QHBoxLayout>
-#include <QValueAxis>
-#include <QChartView>
+#include "Charts/chart.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -32,19 +28,14 @@ public:
     int GetTimeUpdate();
 
 public slots:
-    void update(double leftSpeed, double rightSpeed, double time);
+    void update(double time, double leftSpeed, double rightSpeed, double leftY, double rightY);
 
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *leftScene;
     QGraphicsScene *rightScene;
 
-    QChart *_chart = nullptr;
-    QChartView *_chartview = nullptr;
-    QSplineSeries *_leftSeries = nullptr;
-    QSplineSeries *_rightSeries = nullptr;
-    QHBoxLayout *_layout = nullptr;
-    QValueAxis *_axisX = nullptr;
-    QValueAxis *_axisY = nullptr;
+    Chart* _leftChart = nullptr;
+    Chart* _rightChart = nullptr;
 
 };

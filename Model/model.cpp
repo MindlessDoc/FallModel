@@ -23,7 +23,8 @@ void Model::UpdatePhysicalBody()
 
     _time += double(_timeUpdate) / 1000;
 
-    emit PhysicalBodyChanged(_leftPhysicalBody->GetSpeed(), _rightPhysicalBody->GetSpeed(), _time);
+    emit PhysicalBodyChanged(_time, _leftPhysicalBody->GetSpeed(), _rightPhysicalBody->GetSpeed(),
+                             _leftPhysicalBody->GetY(), _rightPhysicalBody->GetY());
 }
 
 void Model::StartGUI()

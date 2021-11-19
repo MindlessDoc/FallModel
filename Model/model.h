@@ -17,7 +17,8 @@ public:
     void PauseModel();
 
 signals:
-    void PhysicalBodyChanged(double leftSpeed, double rightSpeed, double time);
+    void PhysicalBodyChanged(double time, double leftSpeed, double rightSpeed,
+                             double leftY, double rightY);
 
 public slots:
     void UpdatePhysicalBody();
