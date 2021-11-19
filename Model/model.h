@@ -17,7 +17,7 @@ public:
     void PauseModel();
 
 signals:
-    void PhysicalBodyChanged();
+    void PhysicalBodyChanged(double leftSpeed, double rightSpeed, double time);
 
 public slots:
     void UpdatePhysicalBody();
@@ -27,7 +27,8 @@ private:
     PhysicalBody* _rightPhysicalBody;
     MainWindow* _mainWindow;
 
+    double _time = 0.0;
     QTimer* _timer = nullptr;
-    int time_update;
+    int _timeUpdate;
 };
 

@@ -1,4 +1,7 @@
 QT       += core gui
+QT       += charts
+
+QT_CHARTS_USE_NAMESPACE
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 

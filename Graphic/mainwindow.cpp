@@ -44,10 +44,20 @@ void MainWindow::InitPhysicalBodies(PhysicalBody* leftPhysicalBody, PhysicalBody
 
 }
 
-void MainWindow::update()
+void MainWindow::update(double leftSpeed, double rightSpeed, double time)
 {
     leftScene->update();
     rightScene->update();
+
+    if(time > 1.0)
+    {
+        _leftSeries->remove(0);
+        _rightSeries->remove(0);
+        _axisX->setRange(time - 1.0, time);
+    }
+
+    _leftSeries->append(time, leftSpeed);
+    _rightSeries->append(time, rightSpeed);
 }
 
 QPushButton* MainWindow::GetStartButton()
@@ -63,6 +73,60 @@ QPushButton* MainWindow::GetPauseButton()
 int MainWindow::GetTimeUpdate()
 {
     return ui->stepLineEdit->text().toDouble() * 1000;
+}
+
+
+void MainWindow::buildChart()
+{
+    delete _axisX;
+    delete _axisY;
+    delete _leftSeries;
+    delete _rightSeries;
+    delete _chart;
+    delete _chartview;
+    delete _layout;
+
+
+    _leftSeries = new QSplineSeries;
+    _rightSeries = new QSplineSeries;
+    _chart = new QChart;
+    _chartview = new QChartView(_chart);
+    _layout = new QHBoxLayout;
+
+    _axisX = new QValueAxis;
+    _axisY = new QValueAxis;
+
+    _axisX-> setLabelFormat ("%f");
+    _axisX-> setGridLineVisible (true);
+    _axisX-> setMinorTickCount (1);
+    _axisX-> setTitleText ("X");
+
+
+    _axisY->setRange(-5, 5);
+    _axisY->setLabelFormat("%f");
+    _axisY->setGridLineVisible(true);
+    _axisY->setTitleText("Y");
+
+    _chart->addAxis (_axisX, Qt :: AlignBottom);
+    _chart->addAxis (_axisY, Qt :: AlignLeft);
+
+
+    // Создать источник данных
+    _leftSeries->setPen (QPen(Qt::red, 1, Qt::SolidLine));
+    _rightSeries->setPen (QPen(Qt::blue, 1, Qt::SolidLine));
+
+    _chart->legend () -> hide ();
+    _chart->addSeries(_leftSeries);
+    _chart->addSeries(_rightSeries);
+
+    _chart->setAxisX(_axisX, _leftSeries);
+    _chart->setAxisY(_axisY, _leftSeries);
+
+    _chart->setAxisX(_axisX, _rightSeries);
+    _chart->setAxisY(_axisY, _rightSeries);
+
+    _layout->addWidget(_chartview);
+    ui->widget->setLayout(_layout);
 }
 
 

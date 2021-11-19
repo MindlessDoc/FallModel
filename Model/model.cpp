@@ -20,7 +20,10 @@ void Model::UpdatePhysicalBody()
 {
     _leftPhysicalBody->UpdateValues();
     _rightPhysicalBody->UpdateValues();
-    emit PhysicalBodyChanged();
+
+    _time += double(_timeUpdate) / 1000;
+
+    emit PhysicalBodyChanged(_leftPhysicalBody->GetSpeed(), _rightPhysicalBody->GetSpeed(), _time);
 }
 
 void Model::StartGUI()
@@ -30,24 +33,30 @@ void Model::StartGUI()
 
 void Model::StartModel()
 {
-    time_update = _mainWindow->GetTimeUpdate();
+    _time = 0;
+
+    _timeUpdate = _mainWindow->GetTimeUpdate();
+    _mainWindow->buildChart();
 
     _mainWindow->GetPauseButton()->setText("Пауза");
     _mainWindow->InitPhysicalBodies(_leftPhysicalBody, _rightPhysicalBody);
 
-    _timer->start(time_update);
+    _timer->start(_timeUpdate);
 }
 
 void Model::PauseModel()
 {
-    if(_timer->isActive())
+    if(_timer)
     {
-        _timer->stop();
-        _mainWindow->GetPauseButton()->setText("Продолжить");
-    }
-    else
-    {
-        _timer->start();
-        _mainWindow->GetPauseButton()->setText("Пауза");
+        if(_timer->isActive())
+        {
+            _timer->stop();
+            _mainWindow->GetPauseButton()->setText("Продолжить");
+        }
+        else
+        {
+            _timer->start();
+            _mainWindow->GetPauseButton()->setText("Пауза");
+        }
     }
 }
