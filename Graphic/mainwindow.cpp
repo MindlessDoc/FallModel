@@ -30,14 +30,16 @@ void MainWindow::InitPhysicalBodies(PhysicalBody* leftPhysicalBody, PhysicalBody
 {
     leftPhysicalBody->InitValues(ui->OxLineEdit->text().toDouble(), ui->OyLineEdit->text().toDouble(),
                        ui->speedLineEdit->text().toDouble(),
-                       ui->leftSpeeLabel, ui->leftXLabel, ui->leftYLabel);
+                       ui->leftSpeeLabel, ui->leftXLabel, ui->leftYLabel,
+                                 QColor(Qt::red));
     leftPhysicalBody->InitMethod(new EulerMethod(ui->stepLineEdit->text().toDouble(),
                                         new Function(ui->resistanceLineEdit->text().toDouble())));
     leftScene->addItem(leftPhysicalBody->GetAvatar());
 
     rightPhysicalBody->InitValues(ui->OxLineEdit->text().toDouble(), ui->OyLineEdit->text().toDouble(),
                        ui->speedLineEdit->text().toDouble(),
-                       ui->rightSpeedLabel, ui->rightXLabel, ui->rightYLabel);
+                       ui->rightSpeedLabel, ui->rightXLabel, ui->rightYLabel,
+                                  QColor(Qt::blue));
     rightPhysicalBody->InitMethod(new ClassicFourthRKMethod(ui->stepLineEdit->text().toDouble(),
                                         new Function(ui->resistanceLineEdit->text().toDouble())));
     rightScene->addItem(rightPhysicalBody->GetAvatar());

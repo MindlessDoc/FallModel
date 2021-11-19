@@ -2,11 +2,12 @@
 #include "PhysicalBody/physicalbody.h"
 #include <QString>
 
-GraphicRect::GraphicRect(PhysicalBody* physicalBody)
+GraphicRect::GraphicRect(PhysicalBody* physicalBody, QColor color)
     : QGraphicsItem()
+    , _color(color)
     , _physicalBody(physicalBody)
 {
-    setFocus();
+    //setFocus();
 }
 
 GraphicRect::~GraphicRect()
@@ -21,8 +22,8 @@ QRectF GraphicRect::boundingRect() const
 
 void GraphicRect::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-        painter->setPen(QPen(Qt::green));
-        painter->setBrush(QBrush(Qt::yellow));
+        painter->setPen(QPen(Qt::black));
+        painter->setBrush(QBrush(_color));
         painter->drawRect(_physicalBody->GetX() * 100, -_physicalBody->GetY() * 100 - 40, 40, 40);
 
         Q_UNUSED(option);

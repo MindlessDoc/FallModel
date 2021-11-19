@@ -9,7 +9,7 @@ class PhysicalBody;
 class GraphicRect : public QGraphicsItem
 {
 public:
-    GraphicRect(PhysicalBody* _physicalBody);
+    GraphicRect(PhysicalBody* _physicalBody, QColor color);
     ~GraphicRect();
     QRectF boundingRect() const override;
 
@@ -25,6 +25,8 @@ public:
 
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 private:
+    QColor _color;
+
     QLabel* _labelSpeed;
     QLabel* _labelX;
     QLabel* _labelY;

@@ -12,7 +12,7 @@ public:
     PhysicalBody(Method* method = nullptr, double x = 0, double y = 0, double speed = 0);
 
     void InitValues(double x, double y, double speed,
-                  QLabel* labelSpeed, QLabel* labelX, QLabel* labelY);
+                  QLabel* labelSpeed, QLabel* labelX, QLabel* labelY, QColor color);
 
     //void SetAvatar(QGraphicsItem* avatar);
     GraphicRect* GetAvatar();

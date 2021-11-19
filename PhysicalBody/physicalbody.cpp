@@ -11,10 +11,10 @@ PhysicalBody::PhysicalBody(Method* method, double x, double y, double speed)
 }
 
 void PhysicalBody::InitValues(double x, double y, double speed,
-                        QLabel* labelSpeed, QLabel* labelX, QLabel* labelY)
+                        QLabel* labelSpeed, QLabel* labelX, QLabel* labelY, QColor color)
 {
     _x = x; _y = y; _speed = speed;
-    _avatar = new GraphicRect(this);
+    _avatar = new GraphicRect(this, color);
 
     _avatar->SetLabelSpeed(labelSpeed);
     _avatar->SetLabelX(labelX);
